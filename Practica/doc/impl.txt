@@ -1,0 +1,7 @@
+http://erlang.org/course/course.html
+
+Numbers: Integers, Floats
+Atoms
+Tuples
+Lists
+Variables

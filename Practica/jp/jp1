@@ -1,0 +1,36 @@
+-module(echo).
+-export([go/0, invent/1]).
+-import([g/1, h/1]).
+ 
+go() ->
+	Pid1 = spawn(echo, first, []),
+	Pid2 = spawn(echo, pfirst, []),
+	Pid2 ! {self(), hello},
+	receive 
+		{From, Msg} ->
+			io:format("P1 ~w~n",[Msg])
+	end,
+	Pid1 ! stop,
+	Pid2 ! stop.
+
+pfirst() ->
+	Pid3 = spawn(echo, second, []),
+	receive 
+		{From, Msg} ->
+			io:format("P1 ~w~n",[Msg]),
+			From ! {self(), rehello}
+	end,
+	Pid3 ! stop.
+	
+first() ->
+	receive 
+		{From, Msg} ->
+			io:format("P1 ~w~n",[Msg])
+	end.
+	
+second() ->
+	receive 
+		{From, Msg} ->
+			io:format("P1 ~w~n",[Msg])
+	end.	
+

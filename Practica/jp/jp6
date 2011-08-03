@@ -1,0 +1,24 @@
+-module(demo).
+-export([double/1,go/0]).
+
+double(X) ->
+	times(X, 2).
+
+times(X, N) ->
+	X * N.
+	
+go() ->
+	Gogo = spawn(echo, gogo, []),
+	Gogo ! {self(), relax},
+	receive 
+		{From, Msg} ->
+			times(4, 3)
+	end,
+	Gogo ! stop.
+	
+gogo() ->
+	receive 
+		{From, Msg} ->
+			io:format("Frankie says ~w~n",[Msg]),
+			From ! {self(), relaxed}
+	end.

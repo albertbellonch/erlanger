@@ -1,0 +1,10 @@
+-module(helloworld).
+-export([start/0]).
+
+start() ->
+    io:fwrite("Hello, world!\n").
+    
+superstart(Msg) ->
+	io:fwrite(Msg);
+superstart() ->
+	superstart("Default message!\n").

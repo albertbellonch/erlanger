@@ -1,0 +1,21 @@
+sumaLlista([]) -> 0 ;
+sumaLlista([Primer|Resta]) ->
+	suma(Primer, sumaLlista(Resta)) .
+	
+goSumaLlista() -> io:format(sumaLlista([3,7,12,4])) .
+
+midaLlista([]) -> 0 ;
+midaLlista([Primer|Resta]) ->
+	suma(1, midaLlista(Resta)) .
+	
+goMidaLlista() -> io:format(midaLlista([1,67,9,0,0,0,4,3,8,5,1,55,783,5])) .
+
+multiplica(A,B) -> A * B .
+
+divideix(A,B) -> A / B .
+
+suma(A,B) -> A + B .
+
+resta(A,B) -> A - B .
+
+goExample(A,B) -> random:random(suma(A,B) * resta(A,B) * multiplica(A,B)) / divideix(A,B) .

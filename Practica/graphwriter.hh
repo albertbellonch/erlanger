@@ -1,0 +1,1 @@
+void generateGraph(AST *root, bool showModules, bool showExports, bool showImports, bool showFunctions, bool showProcesses);
